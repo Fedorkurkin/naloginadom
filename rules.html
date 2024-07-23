@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Правила - AnanazPlay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f9;
+            color: #333;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #ff7e5f;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 15px 0;
+            transition: color 0.3s;
+        }
+        .sidebar a:hover {
+            color: #feb47b;
+        }
+        .content-wrapper {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+        }
+        .header {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 3em;
+            font-weight: 700;
+        }
+        .header p {
+            font-size: 1.2em;
+        }
+        .content {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .content:hover {
+            transform: translateY(-10px);
+        }
+        .content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #444;
+            font-weight: 700;
+            font-size: 2.5em;
+        }
+        .content ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .content li {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f9f9fb;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+        .content li:hover {
+            background-color: #f0f0f5;
+        }
+        .content li i {
+            color: #ff7e5f;
+            margin-right: 10px;
+        }
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        .footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <a href="index.html">Главная</a>
+    <a href="donate.html">Донат</a>
+    <a href="https://forum.ananazplay-forum.fun" target="_blank">Форум</a>
+    <a href="download.html">Скачать</a>
+</div>
+
+<div class="content-wrapper">
+    <div class="header">
+        <h1>AnanazPlay</h1>
+       
+    </div>
+
+    <div class="content">
+        <h2>Основные правила</h2>
+        <ul>
+            <li><i class="fas fa-gavel"></i> Запрещено использование читов и багов для получения преимуществ в игре.</li>
+            <li><i class="fas fa-comments"></i> Уважайте других игроков и избегайте оскорблений или ненависти.</li>
+            <li><i class="fas fa-shield-alt"></i> Не злоупотребляйте игровыми механиками для нарушения баланса.</li>
+            <li><i class="fas fa-ban"></i> Запрещена реклама сторонних ресурсов без согласования с администрацией.</li>
+            <li><i class="fas fa-user-shield"></i> Старайтесь сохранять приватность своих данных и не делитесь личной информацией.</li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
