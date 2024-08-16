@@ -35,3 +35,206 @@
             margin: 5px 0;
             width: 100%;
             border-radius: 5px;
+            border: none;
+        }
+        .balance {
+            margin: 10px 0;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+        .history {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Donat Shop</h1>
+
+        <div class="balance">Баланс: <span id="balance">0</span> BC</div>
+
+        <div class="promo">
+            <input type="text" id="promoCode" placeholder="Введите промокод">
+            <button onclick="applyPromo()">Применить промокод</button>
+        </div>
+
+        <div class="services">
+            <h2>Услуги</h2>
+            <div class="service">
+                <span>Изменить имя</span>
+                <span>50 BC</span>
+                <button onclick="addToCart(50, 'Изменить имя')">Добавить</button>
+            </div>
+            <div class="service">
+                <span>Снять варн</span>
+                <span>100 BC</span>
+                <button onclick="addToCart(100, 'Снять варн')">Добавить</button>
+            </div>
+            <div class="service">
+                <span>Все лицензии</span>
+                <span>150 BC</span>
+                <button onclick="addToCart(150, 'Все лицензии')">Добавить</button>
+            </div>
+            <div class="service">
+                <span>Покупка силы</span>
+                <span>300 BC</span>
+                <button onclick="addToCart(300, 'Покупка силы')">Добавить</button>
+            </div>
+            <div class="service">
+                <span>Быстрое лечение</span>
+                <span>75 BC</span>
+                <button onclick="addToCart(75, 'Быстрое лечение')">Добавить</button>
+            </div>
+            <div class="service">
+                <span>Изменить имя семьи</span>
+                <span>500 BC</span>
+                <button onclick="addToCart(500, 'Изменить имя семьи')">Добавить</button>
+            </div>
+            <div class="service">
+                <span>Повышение законности</span>
+                <span>5 BC</span>
+                <button onclick="addToCart(5, 'Повышение законности')">Добавить</button>
+            </div>
+            <div class="service">
+                <span>Снять розыск</span>
+                <span>150 BC</span>
+                <button onclick="addToCart(150, 'Снять розыск')">Добавить</button>
+            </div>
+        </div>
+
+        <div class="cart">
+            <h2>Корзина</h2>
+            <div id="cartItems"></div>
+            <button onclick="checkout()">Оплатить</button>
+        </div>
+
+        <div class="game">
+            <h2>Заработать BC</h2>
+            <button onclick="startGame()">Начать играть</button>
+            <button onclick="collectMoney()">Забрать деньги</button>
+            <div>Заработано: <span id="earned">0</span> BC</div>
+        </div>
+
+        <div class="clicker">
+            <h2>Кликер</h2>
+            <button onclick="clickGame()">Заработать BC</button>
+            <div>Заработано в кликере: <span id="clickEarned">0</span> BC</div>
+        </div>
+
+        <div class="history">
+            <h2>История покупок</h2>
+            <div id="history"></div>
+        </div>
+    </div>
+
+    <script>
+        let balance = localStorage.getItem('balance') ? parseInt(localStorage.getItem('balance')) : 0;
+        let cart = [];
+        let earned = 0;
+        let clickEarned = 0;
+
+        document.getElementById('balance').innerText = balance;
+
+        const promoCodes = {
+            'AUGUST24': 50,
+            'PROMONEW': 100,
+            'Жёлтые_уточки': 88,
+            'Шашлык24': 99
+        };
+
+        const usedPromos = JSON.parse(localStorage.getItem('usedPromos')) || [];
+
+        function applyPromo() {
+            let promo = document.getElementById('promoCode').value;
+            if (promoCodes[promo] && !usedPromos.includes(promo)) {
+                balance += promoCodes[promo];
+                document.getElementById('balance').innerText = balance;
+                localStorage.setItem('balance', balance);
+                usedPromos.push(promo);
+                localStorage.setItem('usedPromos', JSON.stringify(usedPromos));
+                alert(`Промокод применен, на ваш баланс добавлено ${promoCodes[promo]} BC!`);
+            } else {
+                alert('Промокод недействителен или уже использован.');
+            }
+        }
+
+        function addToCart(amount, name) {
+            cart.push({ name, amount });
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartItems = document.getElementById('cartItems');
+            cartItems.innerHTML = '';
+            cart.forEach(item => {
+                cartItems.innerHTML += `<div class="item">${item.name}: ${item.amount} BC</div>`;
+            });
+        }
+
+        function checkout() {
+            let total = cart.reduce((sum, item) => sum + item.amount, 0);
+            if (total > balance) {
+                alert('Недостаточно BC для оплаты.');
+            } else {
+                balance -= total;
+                document.getElementById('balance').innerText = balance;
+                localStorage.setItem('balance', balance);
+                addToHistory();
+                cart = [];
+                updateCart();
+                alert('Покупка успешна!');
+            }
+        }
+
+        function addToHistory() {
+            let history = JSON.parse(localStorage.getItem('history')) || [];
+            cart.forEach(item => {
+                history.push(`${item.name} - ${item.amount} BC - ${new Date().toLocaleString()}`);
+            });
+            localStorage.setItem('history', JSON.stringify(history));
+            displayHistory();
+        }
+
+        function displayHistory() {
+            let historyDiv = document.getElementById('history');
+            historyDiv.innerHTML = '';
+            let history = JSON.parse(localStorage.getItem('history')) || [];
+            history.forEach(entry => {
+                historyDiv.innerHTML += `<div>${entry}</div>`;
+            });
+        }
+
+        function startGame() {
+            earned = 0.1;
+            setTimeout(() => {
+                balance += earned;
+                document.getElementById('balance').innerText = balance;
+                localStorage.setItem('balance', balance);
+                alert(`Игра окончена, вы заработали ${earned} BC`);
+                earned = 0.1;
+            }, 3600000); // 1 час
+        }
+
+        function collectMoney() {
+            balance += earned;
+            document.getElementById('balance').innerText = balance;
+            localStorage.setItem('balance', balance);
+            earned = 0.1;
+            alert('Вы забрали свои BC!');
+        }
+
+        function clickGame() {
+            clickEarned += 1;
+            document.getElementById('clickEarned').innerText = clickEarned;
+            balance += 0.1;
+            document.getElementById('balance').innerText = balance;
+            localStorage.setItem('balance', balance);
+        }
+
+        displayHistory();
+    </script>
+</body>
+</html>
