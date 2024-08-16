@@ -3,194 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnanazPlay - Реклама SAMP проекта</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Донат Услуги</title>
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f4f4f9;
-            color: #333;
-            display: flex;
-        }
-        .sidebar {
-            width: 250px;
-            background: #ff7e5f;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 40px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-        }
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.2em;
-            margin: 15px 0;
-            transition: color 0.3s;
-        }
-        .sidebar a:hover {
-            color: #feb47b;
-        }
-        .content-wrapper {
-            margin-left: 250px;
-            width: calc(100% - 250px);
-        }
-        .header {
-            background: linear-gradient(135deg, #ff7e5f, #feb47b);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 3em;
-            font-weight: 700;
-        }
-        .header p {
-            font-size: 1.2em;
-        }
-        .content {
-            max-width: 1000px;
-            margin: 40px auto;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
             padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            background-color: #ffffff;
-            border-radius: 8px;
-            transition: transform 0.3s;
         }
-        .content:hover {
-            transform: translateY(-10px);
-        }
-        .content h2 {
+        h1 {
             text-align: center;
-            margin-bottom: 20px;
-            color: #444;
-            font-weight: 700;
             font-size: 2.5em;
-        }
-        .content p {
-            line-height: 1.6;
-            font-size: 1.1em;
             margin-bottom: 20px;
-            color: #555;
         }
-        .highlight {
-            color: #ff7e5f;
-            font-weight: 600;
-        }
-        .features {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        .feature-item {
-            width: calc(33% - 40px);
-            margin: 20px;
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
-            background: #f9f9fb;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .service {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .service button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
             transition: background-color 0.3s;
         }
-        .feature-item:hover {
-            background-color: #f0f0f5;
+        .service button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
         }
-        .feature-item i {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #ff7e5f;
+        .service button:hover:not(:disabled) {
+            background-color: #218838;
         }
-        .feature-item h3 {
-            margin-top: 0;
-            font-size: 1.4em;
-            color: #444;
-            font-weight: 600;
-        }
-        .feature-item p {
-            font-size: 1em;
-            color: #666;
-        }
-        .cta-button {
-            display: block;
-            width: 200px;
-            margin: 40px auto;
-            padding: 15px 30px;
-            background-color: #ff7e5f;
-            color: white;
+        .balance {
             text-align: center;
-            border-radius: 8px;
+            margin: 20px 0;
             font-size: 1.2em;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background-color 0.3s, transform 0.3s;
         }
-        .cta-button:hover {
-            background-color: #e06650;
-            transform: scale(1.05);
-        }
-        .footer {
-            background: #333;
-            color: white;
+        #promoSection {
             text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
+            margin-bottom: 20px;
         }
-        .footer p {
-            margin: 0;
+        #promoSection input {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #promoSection button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        #promoSection button:hover {
+            background-color: #0056b3;
+        }
+        .cart {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .cart button {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-bottom: 10px;
+        }
+        .cart button:hover {
+            background-color: #0056b3;
+        }
+        .log {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .game {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .game button {
+            padding: 10px 20px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        .game button:hover {
+            background-color: #e64a19;
+        }
+        .clicker {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .clicker button {
+            padding: 10px 20px;
+            background-color: #ffeb3b;
+            color: black;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        .clicker button:hover {
+            background-color: #fbc02d;
         }
     </style>
 </head>
 <body>
-
-<div class="sidebar">
-    <a href="rules.html">Правила</a>
-    <a href="donate.html">Донат</a>
-    <a href="https://forum.ananazplay-forum.fun" target="_blank">Форум</a>
-    <a href="download.html">Скачать</a>
-</div>
-
-<div class="content-wrapper">
-    <div class="header">
-        <h1>AnanazPlay</h1>
-        <p>Твой новый игровой мир в SAMP</p>
-    </div>
-
-    <div class="content">
-        <h2>Почему выбрать <span class="highlight">AnanazPlay</span>?</h2>
-        <p>AnanazPlay — это уникальный проект, который открывает перед вами удивительный мир GTA: San Andreas Multiplayer (SAMP). Мы предлагаем игрокам невероятный опыт с захватывающими миссиями, уникальными транспортными средствами и дружелюбным сообществом, где каждый найдет себе место.</p>
-        <div class="features">
-            <div class="feature-item">
-                <i class="fas fa-car"></i>
-                <h3>Уникальные автомобили</h3>
-                <p>Наш сервер предлагает эксклюзивные автомобили, которых вы не найдете больше нигде!</p>
+    <div class="container">
+        <h1>Донат Услуги</h1>
+        
+        <div class="balance">
+            Баланс: <span id="balance">0 BC</span>
+            <button onclick="addBalance()">Пополнить баланс</button>
+        </div>
+        
+        <div id="promoSection">
+            <input type="text" id="promoCode" placeholder="Введите промокод">
+            <button onclick="applyPromoCode()">Применить</button>
+        </div>
+        
+        <div id="services">
+            <!-- Обновленные услуги -->
+            <div class="service">
+                Изменить имя: 50 BC <button onclick="addToCart(50)">Купить</button>
             </div>
-            <div class="feature-item">
-                <i class="fas fa-user-friends"></i>
-                <h3>Дружелюбное сообщество</h3>
-                <p>Присоединяйтесь к нашим игрокам и создайте незабываемые воспоминания вместе!</p>
+            <div class="service">
+                Снять варн: 100 BC <button onclick="addToCart(100)">Купить</button>
             </div>
-            <div class="feature-item">
-                <i class="fas fa-map"></i>
-                <h3>Огромный мир</h3>
-                <p>Изучайте огромную карту, полную тайн и неожиданных приключений.</p>
+            <div class="service">
+                Все лицензии: 150 BC <button onclick="addToCart(150)">Купить</button>
+            </div>
+            <div class="service">
+                Покупка силы: 300 BC <button onclick="addToCart(300)">Купить</button>
+            </div>
+            <div class="service">
+                Быстрое лечение: 75 BC <button onclick="addToCart(75)">Купить</button>
+            </div>
+            <div class="service">
+                Изменить имя семьи: 500 BC <button onclick="addToCart(500)">Купить</button>
+            </div>
+            <div class="service">
+                Повышение закон-сти: 5 BC <button onclick="addToCart(5)">Купить</button>
+            </div>
+            <div class="service">
+                Доп. Слот авто в семью: 300 BC <button onclick="addToCart(300)">Купить</button>
+            </div>
+            <div class="service">
+                Смена пола: 100 BC <button onclick="addToCart(100)">Купить</button>
+            </div>
+            <div class="service">
+                Доп. Слот на авто: 100 BC <button onclick="addToCart(100)">Купить</button>
+            </div>
+            <div class="service">
+                Номера на авто: 85 BC <button onclick="addToCart(85)">Купить</button>
+            </div>
+            <div class="service">
+                Номер телефона: 70 BC <button onclick="addToCart(70)">Купить</button>
+            </div>
+            <div class="service">
+                Доп. Слот на бизнес: 5000 BC <button onclick="addToCart(5000)">Купить</button>
+            </div>
+            <div class="service">
+                Пониженный износ: 300 BC <button onclick="addToCart(300)">Купить</button>
+            </div>
+            <div class="service">
+                Вечная Мед. Карта: 300 BC <button onclick="addToCart(300)">Купить</button>
+            </div>
+            <div class="service">
+                Купить Мед. Карту: 100 BC <button onclick="addToCart(100)">Купить</button>
+            </div>
+            <div class="service">
+                Уник. Музыка на вход: 50 BC <button onclick="addToCart(50)">Купить</button>
+            </div>
+            <div class="service">
+                Передать семью: 100 BC <button onclick="addToCart(100)">Купить</button>
+            </div>
+            <div class="service">
+                Приобрести Военный Билет: 130 BC <button onclick="addToCart(130)">Купить</button>
+            </div>
+            <div class="service">
+                Муз. Подписка: 199 BC <button onclick="addToCart(199)">Купить</button>
+            </div>
+            <div class="service">
+                Колонка JBL: 500 BC <button onclick="addToCart(500)">Купить</button>
+            </div>
+            <div class="service">
+                Сабвуфер PIONEER: 1000 BC <button onclick="addToCart(1000)">Купить</button>
+            </div>
+            <div class="service">
+                Доп. Слот на дом: 2500 BC <button onclick="addToCart(2500)">Купить</button>
             </div>
         </div>
-        <a href="samp://65.108.99.34:1381" class="cta-button">Присоединиться сейчас!</a>
+        
+        <div class="cart">
+            <h3>Корзина</h3>
+            <div id="cartItems">Корзина пуста</div>
+            <button onclick="checkout()">Оплатить корзину</button>
+        </div>
+        
+        <div class="log">
+            <h3>История покупок</h3>
+            <div id="purchaseLog">Нет покупок</div>
+        </div>
+        
+        <div class="game">
+            <button onclick="startGame()">Начать играть</button>
+            <button onclick="collectWinnings()">Забрать</button>
+            <div id="gameStatus">Вы не начали игру</div>
+        </div>
+        
+        <div class="clicker">
+            <button onclick="clickForCoins()">Кликни для монет</button>
+            <div id="clickCount">Количество кликов: 0</div>
+        </div>
     </div>
+    
+    <script>
+        let balance = 0;
+        let cart = [];
+        let purchases = [];
+        let clickCount = 0;
+        let gameActive = false;
 
-    <div class="footer">
-        <p>&copy; 2024 AnanazPlay. Все права защищены.</p>
-    </div>
-</div>
+        function updateBalance() {
+            document.getElementById('balance').innerText = balance + ' BC';
+        }
 
+        function addBalance() {
+            let amount = parseInt(prompt("Введите сумму для пополнения:"));
+            if (amount > 0) {
+                balance += amount;
+                updateBalance();
+            } else {
+                alert("Неверная сумма");
+            }
+        }
+
+        function addToCart(price) {
+            if (balance >= price) {
+                cart.push(price);
+                updateCart();
+            } else {
+                alert("Недостаточно средств на балансе");
+            }
+        }
+
+        function updateCart() {
+            let cartDiv = document.getElementById('cartItems');
+            if (cart.length > 0) {
+                cartDiv.innerHTML = "Текущая корзина: " + cart.join(", ") + " BC";
+            } else {
+                cartDiv.innerHTML = "Корзина пуста";
+            }
+        }
+
+        function checkout() {
+            let total = cart.reduce((sum, item) => sum + item, 0);
+            if (balance >= total) {
+                balance -= total;
+                purchases = purchases.concat(cart);
+                cart = [];
+                updateCart();
+                updateBalance();
+                updatePurchaseLog();
+                alert("Покупка успешна!");
+            } else {
+                alert("Недостаточно средств на балансе для оплаты корзины");
+            }
+        }
+
+        function updatePurchaseLog() {
+            let logDiv = document.getElementById('purchaseLog');
+            if (purchases.length > 0) {
+                logDiv.innerHTML = "Вы купили: " + purchases.join(", ") + " BC";
+            } else {
+                logDiv.innerHTML = "Нет покупок";
+            }
+        }
+
+        function applyPromoCode() {
+            let code = document.getElementById('promoCode').value.trim().toUpperCase();
+            if (code === "BONUS100") {
+                balance += 100;
+                updateBalance();
+                alert("Промокод применен! Ваш баланс увеличен на 100 BC");
+            } else {
+                alert("Неверный промокод");
+            }
+        }
+
+        function startGame() {
+            if (!gameActive) {
+                gameActive = true;
+                document.getElementById('gameStatus').innerText = "Игра активна! Нажмите 'Забрать' для выигрыша.";
+            } else {
+                alert("Игра уже активна!");
+            }
+        }
+
+        function collectWinnings() {
+            if (gameActive) {
+                let winnings = Math.floor(Math.random() * 500) + 1;
+                balance += winnings;
+                updateBalance();
+                document.getElementById('gameStatus').innerText = "Вы выиграли " + winnings + " BC!";
+                gameActive = false;
+            } else {
+                alert("Сначала начните игру");
+            }
+        }
+
+        function clickForCoins() {
+            clickCount++;
+            document.getElementById('clickCount').innerText = "Количество кликов: " + clickCount;
+            if (clickCount % 10 === 0) {
+                balance += 10;
+                updateBalance();
+                alert("Вы заработали 10 BC!");
+            }
+        }
+    </script>
 </body>
 </html>
